@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'ra.admin',
     'ra.activity',
     'ra.reporting',
+    'sales',
 ]
 
 MIDDLEWARE = [
@@ -124,12 +125,18 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # Hand settings
+import environ
+env = environ.Env()
+# reading .env file
+environ.Env.read_env()
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': f'{env("DATABASE_NAME")}',
+        'USER': f'{env("DATABASE_USER")}',
+        'PASSWORD': f'{env("DATABASE_PASSWORD")}',
         'HOST': '',
         'PORT': '5432',
     }
