@@ -150,3 +150,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 
 )
+
+RA_ADMIN_INDEX_PAGE = 'sales/index.html'
+

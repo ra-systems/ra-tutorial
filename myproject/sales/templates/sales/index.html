@@ -1,0 +1,19 @@
+{% extends 'ra/admin/base_site.html' %}
+{% load ra_admin_tags %}
+
+{% block content %}
+{% get_report base_model='client' report_slug='clienttotalbalance' as client_balances %}
+<div data-report-widget
+     data-report-url="{{ client_balances.get_url }}">
+
+    <div data-report-table></div>
+</div>
+
+<div data-report-widget
+     data-report-url="{{ client_balances.get_url }}">
+
+    <canvas data-report-chart height="50" data-report-default-chart="bar_chart"></canvas>
+    <div data-report-table></div>
+</div>
+
+{% endblock %}
