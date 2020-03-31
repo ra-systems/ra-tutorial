@@ -5,6 +5,8 @@ from .models import Client, Product, SimpleSales
 
 class ClientAdmin(RaAdmin):
     fields = ('slug', 'title', 'notes', 'address', 'email', 'telephone')
+    view_template = 'sales/admin/client_view.html'
+
 
 
 class ProductAdmin(RaAdmin):
