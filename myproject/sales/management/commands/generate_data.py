@@ -26,7 +26,7 @@ class Command(BaseCommand):
         clients_needed = client_count - already_recorded
         if clients_needed > 0:
             for index in range(already_recorded, already_recorded + clients_needed):
-                Client.objects.create(title=f'Client {index}', lastmod_user_id=user_id)
+                Client.objects.create(title=f'Client {index}', lastmod_user_id=user_id, slug=index)
             self.stdout.write(f'{clients_needed} client(s) created')
 
         # Product
@@ -34,7 +34,7 @@ class Command(BaseCommand):
         product_needed = product_count - already_recorded
         if product_needed > 0:
             for index in range(already_recorded, already_recorded + product_needed):
-                Product.objects.create(title=f'Product {index}', lastmod_user_id=user_id)
+                Product.objects.create(title=f'Product {index}', lastmod_user_id=user_id, slug=index)
             self.stdout.write(f'{product_needed} product(s) created')
 
         # generating sales
