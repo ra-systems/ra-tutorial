@@ -52,14 +52,14 @@ Now we're ready to set up the bakery demo project itself:
 Next, we'll set up our local environment variables. We use [django-environ](https://github.com/joke2k/django-environ)
 to help with this. It reads environment variables located in a file name `.env` next to the settings.py file of the project. The variables we need to set are the `DATABASES`.
  
-Database
+###Database
 
-    Ra only support Postgresql.
+####Ra only support Postgresql.
 
-    As Django's `QuerySet.distinct(*fields) <https://docs.djangoproject.com/en/2.2/ref/models/querysets/#django.db.models.query.QuerySet.distinct>`_ is supported only on Postgres.
-    ``distinct(*fields)`` is used by the reporting engine.
+As Django's [QuerySet.distinct(*fields)](https://docs.djangoproject.com/en/2.2/ref/models/querysets/#django.db.models.query.QuerySet.distinct) is supported only on Postgres.
+``distinct(*fields)`` is used by the reporting engine.
 
-To create a postgres database via command line :
+####To create a postgres database via command line :
 
 Login / switch user to postgres
 
@@ -73,8 +73,13 @@ Create a Database
 
     psql -c "CREATE DATABASE <DATABSE_NAME_HERE> WITH OWNER <DATABASE_USERNAME_HERE>"
 
+Assign these values in `.env` file next to the settings.py file, like this:
 
-To set up your database and load initial data, run the following commands:
+    DATABASE_NAME=<DATABSE_NAME_HERE>
+    DATABASE_USER=<DATABASE_USERNAME_HERE>
+    DATABASE_PASSWORD=<PASSWORD_HERE>
+
+Finally, To set up your database and load initial data, run the following commands:
     
     cd myproject
     ./manage.py migrate
