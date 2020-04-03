@@ -52,14 +52,14 @@ Now we're ready to set up the bakery demo project itself:
 Next, we'll set up our local environment variables. We use [django-environ](https://github.com/joke2k/django-environ)
 to help with this. It reads environment variables located in a file name `.env` next to the settings.py file of the project. The variables we need to set are the `DATABASES`.
  
-###Database
+### Database
 
-####Ra only support Postgresql.
+#### Ra only support Postgresql.
 
 As Django's [QuerySet.distinct(*fields)](https://docs.djangoproject.com/en/2.2/ref/models/querysets/#django.db.models.query.QuerySet.distinct) is supported only on Postgres.
 ``distinct(*fields)`` is used by the reporting engine.
 
-####To create a postgres database via command line :
+#### To create a postgres database via command line :
 
 Login / switch user to postgres
 
