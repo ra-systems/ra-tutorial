@@ -25,7 +25,7 @@ SECRET_KEY = '1han1v%@fd0#e40#tm0z!g2twgo3+!gf9-kr3--1v5)_bkfv4q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['demo.raframework.io', '.demo.raframework.io']
+ALLOWED_HOSTS = ['demo.raframework.io', '.demo.raframework.io','localhost','127.0.0.1']
 
 # Application definition
 
