@@ -22,7 +22,7 @@ Setup with Virtualenv
 You can run the Ra demo locally 
 
 #### Dependencies
-* Python 3.4, 3.5 or 3.6
+* Python 3.4, 3.5 , 3.6 or 3.10
 * [Virtualenv](https://virtualenv.pypa.io/en/stable/installation/)
 * [PostgresSql](https://www.postgresql.org/download/)
 * [VirtualenvWrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) (optional)

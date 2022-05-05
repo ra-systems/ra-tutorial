@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'jazzmin',
     'crequest',
     'crispy_forms',
     'reversion',
@@ -134,9 +134,9 @@ environ.Env.read_env()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': f'{env("DATABASE_NAME")}',
-        'USER': f'{env("DATABASE_USER")}',
-        'PASSWORD': f'{env("DATABASE_PASSWORD")}',
+        'NAME': f'{env("test")}',
+        'USER': f'{env("admin")}',
+        'PASSWORD': f'{env("admin")}',
         'HOST': '',
         'PORT': '5432',
     }

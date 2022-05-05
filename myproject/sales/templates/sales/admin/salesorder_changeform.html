@@ -1,19 +1,30 @@
-{% extends RA_THEME|add:'/change_form.html' %}
+{% extends 'ra/change_form.html' %}
 
-{% block admin_change_form_document_ready %}
-<script>
-    $(document).ready(function () {
-        const $quantity = $('[name*=quantity]');
-        const $price = $('[name*=price]');
+{% block extrajs %}
+    {{ block.super }}
+    <script>
+            django.jQuery(document).ready(function () {
+                const allQuantity = $('[name*=quantity]');
+                const allPrice = $('[name*=price]');
 
-        function calculateTotal(e) {
-            let quantity = smartParseFloat($quantity.val());
-            let price = smartParseFloat($price.val());
-            $('[name*=value]').val(quantity * price)
-        }
+                function calculateTotal(e) {
+                    let holder = $(e.target).parents('.dynamic-saleslinetransaction_set');
+                    let $quantity = holder.find('[name*=quantity]');
+                    let $price = holder.find('[name*=price]');
+                    let quantity = $.ra.smartParseFloat($quantity.val());
+                    let price = $.ra.smartParseFloat($price.val());
+                    holder.find('[name*=value]').val(quantity * price)
+                }
 
-        $quantity.on('change', calculateTotal);
-        $price.on('change', calculateTotal);
-    })
-</script>
+                allQuantity.on('change', calculateTotal);
+                allPrice.on('change', calculateTotal);
+
+                // The newly created rows
+                // ref: https://docs.djangoproject.com/en/2.2/ref/contrib/admin/javascript/
+                django.jQuery(document).on('formset:added', function (event, $row, formsetName) {
+                    $row.find('[name*=quantity]').on('change', calculateTotal)
+                    $row.find('[name*=price]').on('change', calculateTotal)
+                });
+            })
+    </script>
 {% endblock %}

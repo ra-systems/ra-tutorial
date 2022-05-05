@@ -1,7 +1,7 @@
 from django.utils.translation import gettext_lazy as _
 from ra.reporting.registry import register_report_view
 from ra.reporting.views import ReportView
-from .models import Client, SimpleSales, Product
+from .models import Client, SalesLineTransaction, Product
 
 
 @register_report_view
@@ -9,7 +9,7 @@ class ClientTotalBalance(ReportView):
     report_title = _('Clients Balances')
 
     base_model = Client
-    report_model = SimpleSales
+    report_model = SalesLineTransaction
 
     form_settings = {'group_by': 'client',
                      'group_columns': ['slug', 'title', '__balance__']}
@@ -40,10 +40,10 @@ class ProductTotalSales(ReportView):
     base_model = Product
 
     # What model hold the data that we want to compute.
-    report_model = SimpleSales
+    report_model = SalesLineTransaction
 
     # The meat and potato of the report.
-    # We group the records in SimpleSales by Client ,
+    # We group the records in SalesLineTransaction by Client ,
     # And we display the columns `slug` and `title` (relative to the `base_model` defined above)
     # the magic field `__balance__` computes the balance (of the base model)
     form_settings = {'group_by': 'product',
@@ -54,7 +54,7 @@ class ClientList(ReportView):
     report_title = _('Our Clients')
 
     base_model = Client
-    report_model = SimpleSales
+    report_model = SalesLineTransaction
 
     # will not appear on the reports menu
     hidden = True
@@ -73,7 +73,7 @@ class ProductClientSales(ReportView):
     report_title = _('Client Sales for each product')
 
     base_model = Client
-    report_model = SimpleSales
+    report_model = SalesLineTransaction
 
     must_exist_filter = 'client_id'
     header_report = ClientList
@@ -88,7 +88,7 @@ class ProductClientSales(ReportView):
 class ClientDetailedStatement(ReportView):
     report_title = _('client Statement')
     base_model = Client
-    report_model = SimpleSales
+    report_model = SalesLineTransaction
 
     must_exist_filter = 'client_id'
     header_report = ClientList
@@ -103,7 +103,7 @@ class ProductSalesMonthly(ReportView):
     report_title = _('Product Sales Monthly')
 
     base_model = Product
-    report_model = SimpleSales
+    report_model = SalesLineTransaction
 
     form_settings = {
         'group_by': 'product',
@@ -172,7 +172,7 @@ class ClientSalesMonthlySeries(ReportView):
     report_title = _('Client Sales Monthly')
 
     base_model = Client
-    report_model = SimpleSales
+    report_model = SalesLineTransaction
 
     form_settings = {
         'group_by': 'client',
@@ -186,7 +186,7 @@ class ClientSalesMonthlySeries(ReportView):
 @register_report_view
 class ProductClientSalesMatrix(ReportView):
     base_model = Product
-    report_model = SimpleSales
+    report_model = SalesLineTransaction
     report_title = _('Product Client sales Cross-tab')
 
     form_settings = {
